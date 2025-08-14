@@ -11,10 +11,10 @@ renamed as (
     select
 
         ----------  ids
-        id as customer_id,
+        string_field_0 as customer_id,
 
         ---------- properties
-        name
+        string_field_1 as name
 
     from source
 

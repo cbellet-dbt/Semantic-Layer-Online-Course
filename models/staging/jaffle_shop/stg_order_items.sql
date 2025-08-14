@@ -12,11 +12,11 @@ renamed as (
     select
 
         ----------  ids
-        id as order_item_id,
-        order_id,
+        string_field_0 as order_item_id,
+        string_field_1 as order_id,
 
         ---------- properties
-        sku as product_id
+        string_field_2 as product_id
 
     from source
 
