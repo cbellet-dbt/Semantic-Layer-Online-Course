@@ -162,14 +162,6 @@ metrics:
 
 #Derived Metrics      
 
-  - name: "food_order_pct_cumulative"
-    label: "food_order_as_percent_of_total_order_amount"    
-    description: "Food order total as a % of total order amount"
-    type: derived
-    type_params:
-      expr: food_order_pct * 100
-      metrics:
-        - name: "food_order_pct"
   - name: "food_order_gross_profit"
     label: "food_order_gross_profit"    
     description: "The gross profit for each food order"
@@ -198,39 +190,4 @@ metrics:
           alias: cost
 
 
- #CUMULATIVE METRICS 
-  - name: "cumulative_order_amount"
-    label: "cumulative_order_amount"    
-    description: "The cumulative value of all orders"
-    type: cumulative
-    type_params:
-      measure: order_total
-  - name: "cumulative_order_ammount_l1m"
-    label: "cumulative_order_ammount_l1m"    
-    description: "Trailing 1 month cumulative order amount"
-    type: cumulative
-    type_params:
-      measure: order_total
-      window: 1 month
-  - name: "cumulative_order_amount_mtd"
-    label: "cumulative_order_amount_mtd"    
-    description: "The month to date value of all orders"
-    type: cumulative
-    type_params:
-      measure: order_total
-      grain_to_date: month
-saved_queries:
-  - name: order_metrics
-    description: testing out order metrics in one table 
-    query_params:
-      metrics:
-        - cumulative_order_amount
-        - min_order_amount
-        - max_order_amount
-      group_by:
-        - TimeDimension('metric_time', 'day')
-    exports:
-      - name: order_metrics
-        config:
-          export_as: table
-          schema: faith_tests_exports
+ 
